@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LogInComponent } from './app/modules/log-in/log-in.component';
 import { CarteraComponent } from './modules/cartera/cartera.component';
 import { VentaComponent } from './modules/venta/venta.component';
 import { CompraComponent } from './modules/compra/compra.component';
+import { LogInComponent } from './modules/log-in/log-in.component';
 
 @NgModule({
   declarations: [
