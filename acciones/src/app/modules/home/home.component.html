@@ -1,0 +1,15 @@
+<header>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink='cartera'>Cartera</button>
+      <button mat-menu-item routerLink='compra'>Compra</button>
+      <button mat-menu-item routerLink='venta'>Venta</button>
+    </mat-menu>    
+</header>
+
+<router-outlet></router-outlet>
+
+<footer>
+    <p>Author: Hege Refsnes<br>
+    <a href="mailto:hege@example.com">hege@example.com</a></p>
+</footer>

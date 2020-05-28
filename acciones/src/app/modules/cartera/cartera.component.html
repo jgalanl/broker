@@ -1,1 +1,41 @@
-<p>cartera works!</p>
+<div *ngIf="user.cartera !== undefined && user.cartera !== null">
+    <div *ngIf="user.cartera.length > 0; else elseBlock">
+        Estas son tus acciones:
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+            <ng-container matColumnDef="empresa">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </th>
+              <td mat-cell *matCellDef="let element"> {{element.empresa}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="numero">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+              <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="precio_compra">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio de compra </th>
+              <td mat-cell *matCellDef="let element"> {{element.precio_compra}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="precio_actual">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio actual </th>
+              <td mat-cell *matCellDef="let element"> {{element.precio_actual}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="rentabilidad">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Rentabilidad </th>
+              <td mat-cell *matCellDef="let element"> {{element.rentabilidad}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+          </table>
+          
+          <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+          
+    </div>
+    <ng-template #elseBlock>
+        Aún no tienes acciones en tu cartera
+    </ng-template>
+</div>

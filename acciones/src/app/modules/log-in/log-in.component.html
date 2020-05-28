@@ -1,1 +1,16 @@
-<p>log-in works!</p>
+<div class="main-container">
+    <div class="formulario">
+      <!-- <img src="../../../assets/login.png" /> -->
+      <div class="formGroup">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="on">
+          <input type="text" formControlName="user" placeholder="Correo" required />
+          <br>
+          <input type="password" formControlName="password" placeholder="Contraseña" required />
+          <button type="submit" [disabled]="!loginForm.valid">
+            Iniciar sesión
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
