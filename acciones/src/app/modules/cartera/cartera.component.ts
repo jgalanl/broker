@@ -27,7 +27,6 @@ export class CarteraComponent implements OnInit {
     this.s_user = this.service.data.getUser(sessionStorage.getItem('user')).subscribe(data => {
       this.user = data[0]
       this.dataSource.data = this.user.cartera
-      console.log(this.dataSource.data)
     })
   }
 

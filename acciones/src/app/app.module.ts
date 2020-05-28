@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule }    from '@angular/common/http';
 
 //Firebase
 import { environment } from 'src/environments/environment';
@@ -12,6 +13,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { MatTableModule } from "@angular/material";
 import { MatPaginatorModule } from '@angular/material';
 import { MatSortModule } from '@angular/material' 
+import {MatSelectModule} from '@angular/material/select'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +44,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    HttpClientModule,
   ],
   exports : [
     MatTableModule,
