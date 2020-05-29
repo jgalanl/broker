@@ -7,6 +7,7 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { User } from '../data/user';
 import * as firebase from 'firebase';
+import { Accion } from '../data/accion';
 
 
 @Injectable({
@@ -39,6 +40,18 @@ export class DataService {
         })
       })
     })
-    }
+  }
+
+  public deleteAccion(nombre: string, empresa: Accion) {
+    console.log(empresa)
+    this.firestore.collection<User>('Usuarios', ref => ref.where('nombre', '==', nombre)).get().toPromise()
+    .then(data => {
+      data.forEach(doc => {
+        this.firestore.collection("Usuarios").doc(doc.id).update({
+          'cartera': firebase.firestore.FieldValue.arrayRemove(empresa)
+        })
+      })
+    })
+  }
 
 }

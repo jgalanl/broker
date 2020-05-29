@@ -38,7 +38,6 @@ export class CompraComponent implements OnInit {
   async getValorActual(e){
     //Recuperar valor actual
     this.service.api.getValue(e.symbol).subscribe((data) => {
-      console.log(data)
       this.precio_unitario = data['c']
       this.importe = this.precio_unitario
       this.simbolo = e.symbol
