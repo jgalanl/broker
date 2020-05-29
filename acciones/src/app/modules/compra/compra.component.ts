@@ -12,30 +12,47 @@ export class CompraComponent implements OnInit {
   public empresas: Array<string>
   compraForm: FormGroup
 
+  public simbolo: string
+  public precio_unitario: number
+  public importe: number
+
   constructor(private formBuilder: FormBuilder, private service: MainService) {
     this.compraForm = this.formBuilder.group({
-      empresa: [''],
-      fecha: new FormControl("", [Validators.required,]),
-      acciones: new FormControl("", [Validators.required,]),
-      importe: new FormControl("", [Validators.required,]),
+      empresa: new FormControl("", [Validators.required]),
+      fecha: new FormControl(new Date().toISOString().substr(0, 10)),
+      acciones: new FormControl(1, [Validators.required,]),
+      importe: new FormControl(""),
     })
 
     this.getEmpresas()
-   }
+   
+  }
 
   ngOnInit() {
   }
 
   async getEmpresas() {
-    await this.service.api.getSymbols().subscribe(data => {
+    this.empresas = await this.service.api.getSymbols()
+  }
+
+  async getValorActual(e){
+    //Recuperar valor actual
+    this.service.api.getValue(e.symbol).subscribe((data) => {
       console.log(data)
-      this.empresas = data
+      this.precio_unitario = data['c']
+      this.importe = this.precio_unitario
+      this.simbolo = e.symbol
     })
   }
 
-  getValorActual(e){
-    //Recuperar valor actual
-    console.log(e)
+  updateImporte(){
+    this.importe = this.compraForm.get('acciones').value * this.precio_unitario
+  }
+
+  onSubmit(){
+    this.service.data.insertAccion(sessionStorage.getItem('user'), this.simbolo,
+    this.compraForm.get('fecha').value, this.compraForm.get('acciones').value, 
+    this.precio_unitario, this.importe)
   }
 
 }

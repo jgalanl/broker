@@ -1,14 +1,15 @@
 <div class="formGroup">
     <form [formGroup]="compraForm" (ngSubmit)="onSubmit()" autocomplete="on">
       <mat-select formControlName="empresa" (selectionChange)="getValorActual($event.value)">
+        <mat-option hidden value="" disabled selected>Empresa </mat-option>
         <mat-option *ngFor="let empresa of empresas" [value]="empresa">
-          {{empresa.symbol}}
+          {{empresa.description}} ({{empresa.symbol}})
         </mat-option>
       </mat-select>
       <br>
-      <input type="date" formControlName="fecha" placeholder="fecha" required />
-      <input type="number" formControlName="acciones" placeholder="acciones" required />
-      <input type="number" formControlName="importe" placeholder="importe" required />
+      <input type="date" formControlName="fecha" placeholder="fecha" readonly="true"/>
+      <input type="number" formControlName="acciones" placeholder="acciones" min="1" (change)="updateImporte($event)"/>
+      <input type="number" formControlName="importe" placeholder="importe" value="{{ importe | number : '1.2-2' }}" readonly="true"  />
       <button type="submit" [disabled]="!compraForm.valid">
         Comprar
       </button>

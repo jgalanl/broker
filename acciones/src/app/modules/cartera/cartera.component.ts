@@ -13,7 +13,7 @@ import { Accion } from 'src/app/data/accion';
 export class CarteraComponent implements OnInit {
   public acciones: Accion[]
   dataSource = new MatTableDataSource();
-  public displayedColumns = ['empresa', 'numero', 'precio_compra', 'precio_actual', 'rentabilidad'];
+  public displayedColumns = ['empresa', 'numero', 'precio_unitario', 'precio_actual', 'rentabilidad'];
 
   @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static:false}) sort: MatSort;
