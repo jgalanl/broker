@@ -13,7 +13,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import { MatTableModule } from "@angular/material";
 import { MatPaginatorModule } from '@angular/material';
 import { MatSortModule } from '@angular/material' 
-import {MatSelectModule} from '@angular/material/select'; 
+import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCardModule} from '@angular/material/card'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,6 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSortModule,
     MatSelectModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
+    MatCardModule
   ],
   exports : [
     MatTableModule,

@@ -52,6 +52,13 @@ export class CompraComponent implements OnInit {
     this.service.data.insertAccion(sessionStorage.getItem('user'), this.simbolo,
     this.compraForm.get('fecha').value, this.compraForm.get('acciones').value, 
     this.precio_unitario, this.importe)
+    .then((result) => {
+      if(result){
+        window.alert("La compra se ha realizado correctamente.")
+      } else {
+        window.alert("Error al realizar la compra.")
+      }
+    })
   }
 
 }

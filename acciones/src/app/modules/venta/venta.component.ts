@@ -43,6 +43,13 @@ export class VentaComponent implements OnInit {
 
   onSubmit(){
     this.service.data.deleteAccion(sessionStorage.getItem('user'), this.empresa)
+    .then((result) => {
+      if(result){
+        window.alert("Venta realizada correctamente.")
+      } else {
+        window.alert("Error al realizar la venta.")
+      }
+    })
   }
 
 }

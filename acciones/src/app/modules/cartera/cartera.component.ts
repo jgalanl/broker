@@ -11,28 +11,48 @@ import { Accion } from 'src/app/data/accion';
   styleUrls: ['./cartera.component.scss']
 })
 export class CarteraComponent implements OnInit {
-  public acciones: Accion[]
   dataSource = new MatTableDataSource();
+
   public displayedColumns = ['empresa', 'numero', 'precio_unitario', 'precio_actual', 'rentabilidad'];
 
   @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static:false}) sort: MatSort;
 
   public user: User = new User()
-  public s_user: Subscription;
+  public isLoading: boolean = true
+  public interval
 
   constructor(private service: MainService) { }
 
   ngOnInit() {
-    this.s_user = this.service.data.getUser(sessionStorage.getItem('user')).subscribe(data => {
-      this.user = data[0]
+    this.service.data.getUser(sessionStorage.getItem('user')).subscribe((data) => {
+      this.user.cartera = data[0].cartera
+      this.updateRentabilidad()
+      this.isLoading = false
       this.dataSource.data = this.user.cartera
-    })
+      this.interval = setInterval(() => {
+        this.updateRentabilidad()
+      }, 35000)
+    })   
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort;
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.interval)
+  }
+
+  updateRentabilidad(){
+    this.user.cartera.forEach(accion => {
+      this.service.api.getValue(accion.empresa).subscribe((data) => {
+        accion.precio_actual = data['c']
+        accion.rentabilidad = accion.numero * (accion.precio_actual - accion.precio_unitario)
+      })
+    });
+    this.dataSource.data = this.user.cartera
   }
 
 }
