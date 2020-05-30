@@ -7,7 +7,7 @@
         </mat-option>
       </mat-select>
       <br>
-      <input type="date" formControlName="fecha" placeholder="fecha" readonly="true"/>
+      <input type="date" formControlName="fecha" placeholder="fecha"/>
       <input type="number" formControlName="importe" placeholder="importe" value="{{ importe | number : '1.2-2' }}" readonly="true"  />
       <button type="submit" [disabled]="!ventaForm.valid">
         Vender

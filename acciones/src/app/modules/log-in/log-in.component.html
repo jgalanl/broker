@@ -3,7 +3,7 @@
       <!-- <img src="../../../assets/login.png" /> -->
       <div class="formGroup">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="on">
-          <input type="text" formControlName="user" placeholder="Correo" required />
+          <input type="text" formControlName="user" placeholder="Usuario" required />
           <br>
           <input type="password" formControlName="password" placeholder="Contraseña" required />
           <button type="submit" [disabled]="!loginForm.valid">

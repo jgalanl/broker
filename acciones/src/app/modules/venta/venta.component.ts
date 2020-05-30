@@ -22,7 +22,7 @@ export class VentaComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private service: MainService) {
     this.ventaForm = this.formBuilder.group({
       empresa: new FormControl("", [Validators.required]),
-      fecha: new FormControl(new Date().toISOString().substr(0, 10)),
+      fecha: new FormControl(new Date().toISOString().substr(0, 10), [Validators.required]),
       importe: new FormControl(""),
     })   
   }

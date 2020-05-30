@@ -3,20 +3,17 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    // background-image: url('../../../assets/background.jpg');
+    background-image: url('../../../assets/wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
   }
   
   .formulario {
-    margin-top: 4%;
+    margin-top: 10em;
   }
-  
-  .formulario img {
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 12em;
-  }
+
   
   .formGroup {
     display: flex;
@@ -27,7 +24,7 @@
   
   .formGroup input {
     color: white;
-    background-color:#628737;
+    background-color:#3399ff;
     height: 50%;
     border-radius: 10px;
     box-sizing: border-box;
@@ -40,13 +37,15 @@
     width: -moz-available;
     height: 50%;
     color: white;
-    background-color: #006600;
+    background-color: #3399ff;
     border-radius: 10px;
     cursor: pointer;
+    margin-top: 1em;
   }
   
   .formGroup button[disabled] {
-    background-color: yellowgreen;
+    margin-top: 1em;
+    background-color: #99ccff;
     cursor: auto;
   }
   
