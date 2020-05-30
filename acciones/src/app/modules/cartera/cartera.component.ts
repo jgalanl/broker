@@ -21,6 +21,7 @@ export class CarteraComponent implements OnInit {
   public user: User = new User()
   public isLoading: boolean = true
   public interval
+  public rentabilidad: number
 
   constructor(private service: MainService) { }
 
@@ -46,10 +47,12 @@ export class CarteraComponent implements OnInit {
   }
 
   updateRentabilidad(){
+    this.rentabilidad = 0
     this.user.cartera.forEach(accion => {
       this.service.api.getValue(accion.empresa).subscribe((data) => {
         accion.precio_actual = data['c']
         accion.rentabilidad = accion.numero * (accion.precio_actual - accion.precio_unitario)
+        this.rentabilidad += accion.rentabilidad
       })
     });
     this.dataSource.data = this.user.cartera

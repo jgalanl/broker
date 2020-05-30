@@ -1,43 +1,43 @@
-        Estas son tus acciones:
-        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-            <ng-container matColumnDef="empresa">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </th>
-              <td mat-cell *matCellDef="let element"> {{element.empresa}} </td>
-            </ng-container>
+<div class="intro">
+  Estas son tus acciones:
+</div>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="empresa">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </th>
+    <td mat-cell *matCellDef="let element"> {{element.empresa}} </td>
+  </ng-container>
           
-            <ng-container matColumnDef="numero">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
-              <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
-            </ng-container>
+  <ng-container matColumnDef="numero">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+    <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
+  </ng-container>
           
-            <ng-container matColumnDef="precio_unitario">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio unitario </th>
-              <td mat-cell *matCellDef="let element"> {{element.precio_unitario}} </td>
-            </ng-container>
+  <ng-container matColumnDef="precio_unitario">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio unitario € </th>
+    <td mat-cell *matCellDef="let element"> {{element.precio_unitario}} </td>
+  </ng-container>
           
-            <ng-container matColumnDef="precio_actual">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio actual </th>
-              <td mat-cell *matCellDef="let element"> {{element.precio_actual}} </td>
-            </ng-container>
+  <ng-container matColumnDef="precio_actual">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio actual € </th>
+    <td mat-cell *matCellDef="let element"> {{element.precio_actual}} </td>
+  </ng-container>
           
-            <ng-container matColumnDef="rentabilidad">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Rentabilidad </th>
-              <td mat-cell *matCellDef="let element" [ngClass]="element.rentabilidad >= 0 ? 'positivo' : 'negativo'"> {{element.rentabilidad | number : '1.2-2'}} </td>
-            </ng-container>
+  <ng-container matColumnDef="rentabilidad">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Rentabilidad €</th>
+    <td mat-cell *matCellDef="let element" [ngClass]="element.rentabilidad >= 0 ? 'positivo' : 'negativo'"> {{element.rentabilidad | number : '1.2-2'}} </td>
+  </ng-container>
           
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          
-          </table>
-          
-          <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
-          
-          Precio total de las acciones: 
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-    <mat-card *ngIf="isLoading" 
-   style="display: flex; justify-content: center; align-items: center">
-  <mat-progress-spinner 
-    color="primary" 
-    mode="indeterminate">
-  </mat-progress-spinner>
+</table>
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+
+<div class="rentabilidad">
+  <p>Rentabilidad total de las acciones: {{rentabilidad | number : '1.2-2'}}</p>
+</div>
+
+<mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+  <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
 </mat-card>

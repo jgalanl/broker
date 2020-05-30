@@ -1,13 +1,36 @@
 header {
-    background-color: #3399ff;
-    margin-bottom: 1em;
+    background-color: #99ccff;
+    margin-bottom: 1%;
     height: 5%;
 }
 
 .main-container {
-    height: 85%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
+.main-container::after {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    content: "";
+    background-image: url('../../../assets/wallpaper.jpg');
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+
 footer {
-    height: 10%;
+    height: 18%;
+    background-color: #99ccff;
+    color: black;
+    padding: 20px;
 }
