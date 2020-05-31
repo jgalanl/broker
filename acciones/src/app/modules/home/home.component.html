@@ -1,10 +1,18 @@
 <header>
     <button mat-button [matMenuTriggerFor]="menu">Menu</button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink='cartera'>Cartera</button>
-      <button mat-menu-item routerLink='compra'>Compra</button>
-      <button mat-menu-item routerLink='venta'>Venta</button>
-      <button mat-menu-item (click)="logOut()">Salir</button>
+      <button mat-menu-item routerLink='cartera' >Cartera 
+        <span class="material-icons">insert_chart_outlined</span>
+      </button>
+      <button mat-menu-item routerLink='compra'>Compra
+        <span class="material-icons">shopping_cart</span>
+      </button>
+      <button mat-menu-item routerLink='venta'>Venta
+        <span class="material-icons"> attach_money</span>
+      </button>
+      <button mat-menu-item (click)="logOut()">Salir
+        <span class="material-icons">login</span>
+      </button>
     </mat-menu>
 </header>
 
