@@ -13,11 +13,11 @@ export class VentaComponent implements OnInit {
 
   public s_user: Subscription;
 
-  public empresas: Array<Accion>
+  public cartera: Array<Accion>
   ventaForm: FormGroup
   public precio_unitario: number
   public importe: number
-  public empresa: any
+  public accion: Accion
 
   constructor(private formBuilder: FormBuilder, private service: MainService) {
     this.ventaForm = this.formBuilder.group({
@@ -29,20 +29,20 @@ export class VentaComponent implements OnInit {
 
   ngOnInit() {
     this.s_user = this.service.data.getUser(sessionStorage.getItem('user')).subscribe(data => {
-      this.empresas = data[0].cartera
+      this.cartera = data[0].cartera
     })
   }
 
-  getImporte(e){
+  getImporte(e: Accion){
     this.service.api.getValue(e.empresa).subscribe((data) => {
       this.precio_unitario = data['c']
       this.importe = this.precio_unitario * e.numero
-      this.empresa = e
+      this.accion = e
     })
   }
 
   onSubmit(){
-    this.service.data.deleteAccion(sessionStorage.getItem('user'), this.empresa)
+    this.service.data.deleteAccion(sessionStorage.getItem('user'), this.accion)
     .then((result) => {
       if(result){
         window.alert("Venta realizada correctamente.")

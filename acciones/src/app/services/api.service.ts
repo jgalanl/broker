@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient, HttpHeaders }    from '@angular/common/http';
+import { HttpClient, HttpHeaders }    from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
-
-
-
-// https://finnhub.io/api/v1/stock/symbol?exchange=MC&tokenbr8e2nnrh5ral083fv90
-// https://finnhub.io/api/v1/stock/symbol?exchange=MC&token=br8e2nnrh5ral083fv90
 
 @Injectable({
   providedIn: 'root'

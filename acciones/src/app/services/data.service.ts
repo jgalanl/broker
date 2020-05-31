@@ -45,19 +45,19 @@ export class DataService {
         resolve(true)
           
         } catch (error) {
-          resolve(false)
+          reject(false)
         }
       })
   }
 
-  public deleteAccion(nombre: string, empresa: Accion): Promise<Boolean> {
+  public deleteAccion(nombre: string, accion: Accion): Promise<Boolean> {
     return new Promise((resolve, reject) => {
       try {
         this.firestore.collection<User>('Usuarios', ref => ref.where('nombre', '==', nombre)).get()
         .toPromise().then(data => {
           data.forEach(doc => {
             this.firestore.collection("Usuarios").doc(doc.id).update({
-              'cartera': firebase.firestore.FieldValue.arrayRemove(empresa)
+              'cartera': firebase.firestore.FieldValue.arrayRemove(accion)
             })
           })
         })
