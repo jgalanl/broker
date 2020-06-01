@@ -33,7 +33,7 @@ export class CarteraComponent implements OnInit {
       this.dataSource.data = this.user.cartera
       this.interval = setInterval(() => {
         this.updateRentabilidad()
-      }, 35000)
+      }, 350000)
     })   
   }
 

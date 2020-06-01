@@ -7,14 +7,14 @@
           {{empresa.description}} ({{empresa.symbol}})
         </mat-option>
       </mat-select>
-      <br>
+      <!-- <br> -->
       <p>Selecciona la fecha de operación:</p>
       <input type="date" formControlName="fecha" placeholder="Fecha" />
       <p>Selecciona el número de acciones a comprar:</p>
       <input type="number" formControlName="acciones" placeholder="Acciones" min="1" (change)="updateImporte($event)"/>
       <p>El importe total de la operación es de: </p>
       <input type="number" formControlName="importe" placeholder="Importe" value="{{ importe | number : '1.2-2' }}" readonly="true"  />
-      <br>
+      <!-- <br> -->
       <button type="submit" [disabled]="!compraForm.valid">
         Comprar
       </button>
