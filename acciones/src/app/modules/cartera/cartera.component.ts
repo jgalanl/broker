@@ -47,6 +47,7 @@ export class CarteraComponent implements OnInit {
   }
 
   updateRentabilidad(){
+    console.log("update")
     this.rentabilidad = 0
     this.user.cartera.forEach(accion => {
       this.service.api.getValue(accion.empresa).subscribe((data) => {
