@@ -2,7 +2,7 @@
 
 <div class="formGroup">
     <form [formGroup]="ventaForm" (ngSubmit)="onSubmit()" autocomplete="on">
-      <p>Escoge una accion de tu cartera:</p>
+      <p>Escoge una accion de tu cartera (*):</p>
       <mat-select formControlName="empresa" (selectionChange)="getImporte($event.value)">
         <mat-option hidden value="" disabled selected>Empresa </mat-option>
         <mat-option *ngFor="let accion of cartera" [value]="accion">
@@ -10,7 +10,7 @@
         </mat-option>
       </mat-select>
       <br>
-      <p>Selecciona la fecha de operación:</p>
+      <p>Selecciona la fecha de operación (*):</p>
       <input type="date" formControlName="fecha" placeholder="Fecha"/>
       <p>El importe total de la operación es de: </p>
       <input type="number" formControlName="importe" placeholder="Importe" value="{{ importe | number : '1.2-2' }}" readonly="true"  />
@@ -20,3 +20,4 @@
       </button>
     </form>
   </div>
+  <p>(*) Obligatorio</p>

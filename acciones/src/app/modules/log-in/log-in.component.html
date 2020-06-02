@@ -3,12 +3,13 @@
       <!-- <img src="../../../assets/login.png" /> -->
       <div class="formGroup">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="on">
-          <input type="text" formControlName="user" placeholder="Usuario" required />
+          <input type="text" formControlName="user" placeholder="Usuario*" required />
           <br>
-          <input type="password" formControlName="password" placeholder="Contraseña" required />
+          <input type="password" formControlName="password" placeholder="Contraseña*" required />
           <button type="submit" [disabled]="!loginForm.valid">
             Iniciar sesión
           </button>
+          <a href="/login">Política de privacidad y cookies</a>
         </form>
       </div>
     </div>
