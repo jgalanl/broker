@@ -15,7 +15,6 @@ export class AuthService {
    * login
    */
   public login(user: string, password: string): Boolean {
-    console.log(user + " " + password)
     if(this.re.test(user) && password == '2020') return true
     else return false    
   }
